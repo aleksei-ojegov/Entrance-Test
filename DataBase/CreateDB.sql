@@ -1,0 +1,23 @@
+CREATE DATABASE IF NOT EXISTS MyBooksDB;
+USE MyBooksDB;
+
+CREATE TABLE IF NOT EXISTS Author (
+    AuthorId INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    BirthYear INT
+);
+
+CREATE TABLE IF NOT EXISTS Publisher (
+    PublisherId INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Book (
+    BookId INT AUTO_INCREMENT PRIMARY KEY,
+    Title VARCHAR(255) NOT NULL,
+    PrintRun INT,
+    AuthorId INT,
+    PublisherId INT,
+    FOREIGN KEY (AuthorID) REFERENCES Author(AuthorId),
+    FOREIGN KEY (PublisherID) REFERENCES Publisher(PublisherId)
+);
